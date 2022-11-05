@@ -28,6 +28,8 @@ for item in items:
             veryRareItems.append(item)
         else:
             otherItems.append(item)
+    else:
+        otherItems.append(item)
 
 
 DISCORD_TOKEN = os.environ.get("DISCORD_TOKEN")
@@ -51,31 +53,36 @@ async def on_message(message):
         random.seed(currentTime.year*10000 + currentTime.month * 100 + currentTime.day)
         finalMessage = "Here's what's up for grabs today:\n"
         highValueMessage = ""
-        common1 = commonItems[random.randint(1, len(commonItems)-1)]
-        common2 = commonItems[random.randint(1, len(commonItems)-1)]
-        common3 = commonItems[random.randint(1, len(commonItems)-1)]
 
-        uncommon1 = uncommonItems[random.randint(1, len(uncommonItems)-1)]
-        uncommon2 = uncommonItems[random.randint(1, len(uncommonItems)-1)]
+        mundaneItem1 = mundaneItems[random.randint(0, len(commonItems)-1)]
+        mundaneItem2 = mundaneItems[random.randint(0, len(commonItems)-1)]
+        mundaneItem3 = mundaneItems[random.randint(0, len(commonItems)-1)]
 
-        rare1 = rareItems[random.randint(1, len(rareItems)-1)]
+        common1 = commonItems[random.randint(0, len(commonItems)-1)]
+        common2 = commonItems[random.randint(0, len(commonItems)-1)]
 
-        veryRare1 = veryRareItems[random.randint(1, len(veryRareItems)-1)]
+        uncommon1 = uncommonItems[random.randint(0, len(uncommonItems)-1)]
 
-        other1 = otherItems[random.randint(1, len(otherItems)-1)]
+        rare1 = rareItems[random.randint(0, len(rareItems)-1)]
 
-        finalMessage += f"• {common1[name]}\n" \
+        veryRare1 = veryRareItems[random.randint(0, len(veryRareItems)-1)]
+
+        other1 = otherItems[random.randint(0, len(otherItems)-1)]
+
+        finalMessage += f"• {mundaneItem1[name]}\n" \
+                        f"• {mundaneItem2[name]}\n" \
+                        f"• {mundaneItem3[name]}\n" \
+                        f"• {common1[name]}\n" \
                         f"• {common2[name]}\n" \
-                        f"• {common3[name]}\n" \
                         f"• {uncommon1[name]}\n" \
-                        f"• {uncommon2[name]}\n"
 
+        # Reset the seed so we can roll pseudo-randomly
         random.seed()
-        if(random.randint(1, 20) == 10):
+        if(random.randint(1, 25) == 1):
             highValueMessage += f"• {rare1[name]}\n"
-        if (random.randint(1, 50) == 50):
+        if (random.randint(1, 50) == 1):
             highValueMessage += f"• {veryRare1[name]}\n"
-        if (random.randint(1, 25) == 10):
+        if (random.randint(1, 33) == 1):
             highValueMessage += f"• {other1[name]}\n"
 
         if len(highValueMessage) > 0:
