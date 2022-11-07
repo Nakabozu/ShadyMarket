@@ -1,1 +1,1 @@
-release: python app.py
+web: python flask-app.py
