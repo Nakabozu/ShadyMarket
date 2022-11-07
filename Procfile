@@ -1,1 +1,1 @@
-web: flask –app ShadyMarket run
+web: python run.py
