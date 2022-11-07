@@ -96,13 +96,9 @@ async def on_message(message):
 
 client.run(DISCORD_TOKEN)
 
-
+# Running Flask app
 app = Flask(__name__)
 port = int(os.environ.get('PORT', 33507))
-
-
-async def async_blanca():
-    exec("./app.py")
 
 
 @app.route("/")
