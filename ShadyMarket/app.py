@@ -95,12 +95,3 @@ async def on_message(message):
         await message.channel.send(finalMessage)
 
 client.run(DISCORD_TOKEN)
-
-# Running Flask app
-app = Flask(__name__)
-port = int(os.environ.get('PORT', 33507))
-
-
-@app.route("/")
-def index():
-    return "What are you doing here?!?  Get out of my house!"
