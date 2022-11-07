@@ -1,5 +1,7 @@
 from setuptools import setup
 
+print("Starting setup")
+
 setup(
     name='ShadyMarket',
     packages=['ShadyMarket'],
